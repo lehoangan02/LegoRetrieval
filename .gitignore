@@ -205,7 +205,8 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
-/DATA
+*.zip
 .DS_Store
 *.npy
 /DataProcess/myenv
+/DATA/extracted
