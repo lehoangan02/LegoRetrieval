@@ -211,3 +211,4 @@ __marimo__/
 /DataProcess/myenv
 /DATA/extracted
 backend/vectordb/mobileclip_s0.pt
+/DATA/OLD_LEGO_DATA
