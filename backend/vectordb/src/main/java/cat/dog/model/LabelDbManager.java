@@ -5,6 +5,7 @@ import cat.dog.dto.LabelRecord;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
 
@@ -36,6 +37,22 @@ public class LabelDbManager {
         } catch (SQLException e) {
             System.err.println("Error saving to DB: " + e.getMessage());
             e.printStackTrace();
+        }
+    }
+    public boolean hasData() {
+        String sql = "SELECT 1 FROM label LIMIT 1"; // Fast check for any row
+
+        try (Connection conn = DriverManager.getConnection(url, user, password);
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            ResultSet rs = pstmt.executeQuery()) {
+
+            return rs.next(); // Returns true if at least one row exists
+
+        } catch (SQLException e) {
+            // If the table doesn't exist, this throws an error. 
+            // We assume false (no data) or handle accordingly.
+            System.err.println("Check failed (Table might not exist): " + e.getMessage());
+            return false;
         }
     }
 }
