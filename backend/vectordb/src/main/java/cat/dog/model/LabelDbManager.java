@@ -19,7 +19,7 @@ public class LabelDbManager {
         this.password = password;
     }
 
-    public void insertLabel(LabelRecord record) {
+    public void insertLabelRecord(LabelRecord record) {
         String sql = "INSERT INTO label (number, image_name, text_ocr, text_corrected, overall_sentiment) " +
                      "VALUES (?, ?, ?, ?, ?::sentiment_level)";
         try (Connection conn = DriverManager.getConnection(url, user, password);
